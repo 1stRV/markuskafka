@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="si_cryptopro_sign_outb" targetNamespace="http://x5.ru/erp" xmlns:p1="http://x5.ru/erp"
+                  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:documentation/>
+    <wsp:UsingPolicy wsdl:required="true"/>
+    <wsp:Policy wsu:Id="OP_si_cryptopro_sign_outb"/>
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://x5.ru/erp" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                    xmlns="http://x5.ru/erp">
+            <xsd:element name="mt_cryptopro_sign_get" type="dt_cryptopro_sign_get"/>
+            <xsd:element name="mt_cryptopro_sign" type="dt_cryptopro_sign"/>
+            <xsd:complexType name="dt_cryptopro_sign_get">
+                <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/VersionID">a74b3f22ed6511e8c4b1000000119fea</xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="PERNR" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">e2b848a5d72711e6b3bab4b52fc03250
+                            </xsd:appinfo>
+                            <xsd:documentation>Табельный номер подписанта</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="TOKEN" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">908fc6cde3d111e6864cb4b52fc03250
+                            </xsd:appinfo>
+                            <xsd:documentation>Токен, полученный на этапе запроса токена</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="BINARY_SECRET" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">908fc6cee3d111e69cfcb4b52fc03250
+                            </xsd:appinfo>
+                            <xsd:documentation>Ключ, для подписания метки времени, который был получен при запросе
+                                токена
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="IP_CRYPTO_PRO" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">2c4978b21def11e880eeb4b52fc03250
+                            </xsd:appinfo>
+                            <xsd:documentation>IP-адрес КриптоПро</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="IS_DETACHED" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">d6c1be3a93e911e8ab5700e04c68028a
+                            </xsd:appinfo>
+                            <xsd:documentation>Х - получить в ответ подпись без документа, в ином случае - получаем
+                                сваязку документ+подпись
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="DOCUMENT" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">d6c1be3b93e911e8ac5700e04c68028a
+                            </xsd:appinfo>
+                            <xsd:documentation>Документ в виде бинарных данных (используется при вызове сервиса из БД
+                                EDI)
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ECP_TYPE" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">a74853a3ed6511e8b943b4b52fc03250
+                            </xsd:appinfo>
+                            <xsd:documentation>Тип подписи</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="dt_cryptopro_sign">
+                <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/VersionID">a31561269b0a11e8863d000000119fea</xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="DATA" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">e2b848a5d72711e6b3bab4b52fc03250
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="COMMENT" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">a33cb27e9b0a11e8a269b4b52fc03250
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="CERTID" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="mt_cryptopro_sign_get">
+        <wsdl:documentation/>
+        <wsdl:part name="mt_cryptopro_sign_get" element="p1:mt_cryptopro_sign_get"/>
+    </wsdl:message>
+    <wsdl:message name="mt_cryptopro_sign">
+        <wsdl:documentation/>
+        <wsdl:part name="mt_cryptopro_sign" element="p1:mt_cryptopro_sign"/>
+    </wsdl:message>
+    <wsdl:portType name="si_cryptopro_sign_outb">
+        <wsdl:documentation/>
+        <wsdl:operation name="si_cryptopro_sign_outb">
+            <wsdl:documentation/>
+            <wsp:Policy>
+                <wsp:PolicyReference URI="#OP_si_cryptopro_sign_outb"/>
+            </wsp:Policy>
+            <wsdl:input message="p1:mt_cryptopro_sign_get"/>
+            <wsdl:output message="p1:mt_cryptopro_sign"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="si_cryptopro_sign_outbBinding" type="p1:si_cryptopro_sign_outb">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"
+                      xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+        <wsdl:operation name="si_cryptopro_sign_outb">
+            <soap:operation soapAction="http://sap.com/xi/WebService/soap1.1"
+                            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+            <wsdl:input>
+                <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="si_cryptopro_sign_outbService">
+        <wsdl:port name="HTTP_Port" binding="p1:si_cryptopro_sign_outbBinding">
+            <soap:address
+                    location="http://p11cidb:55000/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=bs_edi&amp;receiverParty=&amp;receiverService=&amp;interface=si_cryptopro_sign_outb&amp;interfaceNamespace=http%3A%2F%2Fx5.ru%2Ferp"
+                    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+        </wsdl:port>
+        <wsdl:port name="HTTPS_Port" binding="p1:si_cryptopro_sign_outbBinding">
+            <soap:address
+                    location="https://p11cidb/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=bs_edi&amp;receiverParty=&amp;receiverService=&amp;interface=si_cryptopro_sign_outb&amp;interfaceNamespace=http%3A%2F%2Fx5.ru%2Ferp"
+                    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

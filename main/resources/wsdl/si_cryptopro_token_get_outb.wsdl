@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="si_cryptopro_token_get_outb" targetNamespace="http://x5.ru/erp" xmlns:p1="http://x5.ru/erp"
+                  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:documentation/>
+    <wsp:UsingPolicy wsdl:required="true"/>
+    <wsp:Policy wsu:Id="OP_si_cryptopro_token_get_outb"/>
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://x5.ru/erp" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                    xmlns="http://x5.ru/erp">
+            <xsd:element name="mt_cryptopro_token_get" type="dt_cryptopro_token_get"/>
+            <xsd:element name="mt_cryptopro_token" type="dt_cryptopro_token"/>
+            <xsd:complexType name="dt_cryptopro_token_get">
+                <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/VersionID">8aae7602ee0011e6a5db000000119feb</xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="PERNR" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">ced3e577d72111e6a072000ffef1bf4c
+                            </xsd:appinfo>
+                            <xsd:documentation>Personnel number</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ECP_TYPE" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">8a8c572dee0011e6c557b4b52fc03250
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="IP_CRYPTO_PRO" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="dt_cryptopro_token">
+                <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/VersionID">34db951ae46f11e6c0c5000000119feb</xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="TOKEN" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">e2b848a5d72711e6b3bab4b52fc03250
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="BINARY_SECRET" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">e2b848a6d72711e6ce0bb4b52fc03250
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ERROR" type="xsd:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">18879808d74f11e69ff8b4b52fc03250
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="mt_cryptopro_token_get">
+        <wsdl:documentation/>
+        <wsdl:part name="mt_cryptopro_token_get" element="p1:mt_cryptopro_token_get"/>
+    </wsdl:message>
+    <wsdl:message name="mt_cryptopro_token">
+        <wsdl:documentation/>
+        <wsdl:part name="mt_cryptopro_token" element="p1:mt_cryptopro_token"/>
+    </wsdl:message>
+    <wsdl:portType name="si_cryptopro_token_get_outb">
+        <wsdl:documentation/>
+        <wsdl:operation name="si_cryptopro_token_get_outb">
+            <wsdl:documentation/>
+            <wsp:Policy>
+                <wsp:PolicyReference URI="#OP_si_cryptopro_token_get_outb"/>
+            </wsp:Policy>
+            <wsdl:input message="p1:mt_cryptopro_token_get"/>
+            <wsdl:output message="p1:mt_cryptopro_token"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="si_cryptopro_token_get_outbBinding" type="p1:si_cryptopro_token_get_outb">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"
+                      xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+        <wsdl:operation name="si_cryptopro_token_get_outb">
+            <soap:operation soapAction="http://sap.com/xi/WebService/soap1.1"
+                            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+            <wsdl:input>
+                <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="si_cryptopro_token_get_outbService">
+        <wsdl:port name="HTTP_Port" binding="p1:si_cryptopro_token_get_outbBinding">
+            <soap:address
+                    location="http://p11cidb:55000/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=bs_edi&amp;receiverParty=&amp;receiverService=&amp;interface=si_cryptopro_token_get_outb&amp;interfaceNamespace=http%3A%2F%2Fx5.ru%2Ferp"
+                    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+        </wsdl:port>
+        <wsdl:port name="HTTPS_Port" binding="p1:si_cryptopro_token_get_outbBinding">
+            <soap:address
+                    location="https://p11cidb/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=bs_edi&amp;receiverParty=&amp;receiverService=&amp;interface=si_cryptopro_token_get_outb&amp;interfaceNamespace=http%3A%2F%2Fx5.ru%2Ferp"
+                    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
